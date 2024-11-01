@@ -13,7 +13,7 @@ int main()
     METAMORPHIC_CROSS_bit_contribution_test_dsa();
     METAMORPHIC_CROSS_bit_exclusion_test_dsa();
     METAMORPHIC_CROSS_verify_test_dsa();
-    
+    printf("hello\n");
     // run_hawk();
     // run_hawk();
     // run_hawk();

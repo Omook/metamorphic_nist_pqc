@@ -1,14 +1,21 @@
 #include <stdio.h>
-#include "add.h"
+#include "cross/cross_meta/cross_run.h"
+#include "cross/cross_meta/cross_bitcontribution.h"
+#include "cross/cross_meta/cross_bitexclusion.h"
+#include "cross/cross_meta/cross_verify.h"
+
+#include "hawk/hawk_meta/hawk_run.h"
 
 int main()
 {
-
-
     printf("hello\n");
-
-    int a = 4;
-    int b =5;
-    int c = add(a,b);
-    printf("c : %d\n", c);
+    //run_cross();    
+    METAMORPHIC_CROSS_bit_contribution_test_dsa();
+    METAMORPHIC_CROSS_bit_exclusion_test_dsa();
+    METAMORPHIC_CROSS_verify_test_dsa();
+    
+    // run_hawk();
+    // run_hawk();
+    // run_hawk();
+    // run_hawk();
 }

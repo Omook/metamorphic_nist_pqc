@@ -29,7 +29,21 @@
 /******************************************************************************/
 /*************************** Base Fields Parameters ***************************/
 /******************************************************************************/
+
+
+#define CATEGORY_1
+//#define CATEGORY_3
+//#define CATEGORY_5
+
+#define RSDP
+//#define RSDPG
+
+#define SPEED
+//#define BALANCED
+//#define SIG_SIZE
+
 #if defined(RSDP)
+
 
 /* The same base field and restriction are employed for all categories of RSDP */
 #define   Q (127)

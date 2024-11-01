@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "api.h": "c",
+        "assert.h": "c"
+    }
+}

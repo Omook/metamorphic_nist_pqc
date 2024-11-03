@@ -72,13 +72,13 @@ int crypto_sign_open(unsigned char *m,
    /* verify returns 1 if signature is ok, 0 otherwise */
    *mlen = smlen-(unsigned long long) sizeof(sig_t);
    
-   //memcpy((unsigned char *) m, (const unsigned char *) sm, (size_t) *mlen);
+   memcpy((unsigned char *) m, (const unsigned char *) sm, (size_t) *mlen);
    int ok = CROSS_verify((const pubkey_t *const)
                         pk,                     // in parameter
                         (const char *const) m, (const uint64_t) *mlen,  // in parameter
                         (const sig_t * const) (sm+*mlen));              // in parameter
 
-   
+
    return ok-1; // NIST convention: 0 == zero errors, -1 == error condition
 } // end crypto_sign_open
 

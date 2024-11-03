@@ -1,6 +1,6 @@
 #include <stddef.h>
 #include <string.h>
-
+#include <stdio.h>
 #include "api.h"
 #include "hawk.h"
 
@@ -74,13 +74,14 @@ crypto_sign_open(unsigned char *m, unsigned long long *mlen,
 	if (smlen < HAWK_SIG_SIZE(LOGN)) {
 		return -1;
 	}
-	dlen = (size_t)smlen - HAWK_SIG_SIZE(LOGN);
+	dlen = (size_t)smlen - HAWK_SIG_SIZE(LOGN);	
 	hawk_verify_start(&sc);
 	shake_inject(&sc, sm, dlen);
 	if (!hawk_verify_finish(LOGN, sm + dlen, HAWK_SIG_SIZE(LOGN),
 		&sc, pk, HAWK_PUBKEY_SIZE(LOGN), tmp, sizeof tmp))
-	{
+	{		
 		return -1;
+		
 	}
 	if (m != sm) {
 		memmove(m, sm, dlen);

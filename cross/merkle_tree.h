@@ -26,7 +26,6 @@
  **/
 
 #include "csprng_hash.h"
-
 #if defined(NO_TREES)
 
 #define TO_PUBLISH 1

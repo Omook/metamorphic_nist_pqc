@@ -43,7 +43,7 @@ void METAMORPHIC_CROSS_verify_test_dsa()
     crypto_sign_keypair(pk, sk);
     ret_val = crypto_sign(sm, &smlen, m, mlen, sk);
 
-    printf("cc verify test start\n");
+    printf("verify test start\n");
 
     int j = 1;
 
@@ -53,9 +53,9 @@ void METAMORPHIC_CROSS_verify_test_dsa()
         sm_buf[i/8] ^= 1 << (i % 8);
 
         t++;
-        ret_val = crypto_sign_open(m, &mlen, sm_buf, smlen, pk);
-
-        if(ret_val == 0) {                                          
+        ret_val = crypto_sign_open(m1, &mlen1, sm_buf, smlen, pk);
+        
+        if(ret_val == 0 || mlen != mlen1) {                                          
             f++;
             flag = 1;
             printf("i : %d, %d\n", i, smlen);

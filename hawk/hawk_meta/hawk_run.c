@@ -1,4 +1,4 @@
-#include "../hawk256/api.h"
+#include "../hawk512/api.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>

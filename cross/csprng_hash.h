@@ -57,12 +57,11 @@ extern CSPRNG_STATE_T platform_csprng_state;
 static inline
 void randombytes(unsigned char * x,
                  unsigned long long xlen) {
-               
-   //csprng_randombytes(x,xlen,&platform_csprng_state);
-   for(int i=0; i<xlen;i++)
-   {
+   for(int i=0;i<xlen;i++){
       x[i] = i;
    }
+   return;
+   csprng_randombytes(x,xlen,&platform_csprng_state);
 }
 
 /************************* HASH functions ********************************/

@@ -1,6 +1,6 @@
 #include <stddef.h>
 #include <string.h>
-
+#include <stdio.h>
 #include "api.h"
 #include "hawk.h"
 
@@ -48,8 +48,15 @@ crypto_sign(unsigned char *sm, unsigned long long *smlen,
 	shake_context sc;
 
 	if (m != sm) {
-		memmove(sm, m, (size_t)mlen);
+		memmove(sm, m, (size_t)mlen);		
 	}
+	// printf("m: ");
+	// for(int i=0;i<mlen + 5;i++)
+	// {
+	// 	printf("%x ", sm[i]);
+	// }
+	// printf("\n");	
+
 	hawk_sign_start(&sc);
 	shake_inject(&sc, sm, (size_t)mlen);
 	if (!hawk_sign_finish(LOGN, &hrng, 0,
@@ -58,6 +65,8 @@ crypto_sign(unsigned char *sm, unsigned long long *smlen,
 		return -1;
 	}
 	*smlen = mlen + HAWK_SIG_SIZE(LOGN);
+	printf("sig:Size %d\n", *smlen);
+
 	return 0;
 }
 

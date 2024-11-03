@@ -1,0 +1,1 @@
+void METAMORPHIC_hawk_bit_contribution_test_dsa();

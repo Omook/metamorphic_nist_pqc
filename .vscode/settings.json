@@ -1,6 +1,19 @@
 {
     "files.associations": {
         "api.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "cross_verify.h": "c",
+        "stdint.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "perk_bitcontribution.h": "c",
+        "string.h": "c",
+        "less_bitexclusion.h": "c",
+        "sdith_run.h": "c",
+        "perk_bitexclusion.h": "c",
+        "simple_arithmetic.h": "c",
+        "time.h": "c",
+        "less_bitcontribution.h": "c",
+        "mayo_bitcontribution.h": "c"
     }
 }

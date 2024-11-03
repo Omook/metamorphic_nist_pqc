@@ -69,8 +69,7 @@ void METAMORPHIC_CROSS_bit_contribution_test_dsa()
     }
 
 
-    //! change sk
-    int j = 1;
+    //! change sk    
     for(int i = 0; i < sklen * 8; i++){
         memcpy(sk_buf, sk, sklen);
         sk_buf[i/8] ^= 1 << (i % 8);
@@ -92,7 +91,9 @@ EXIT:
     if(!flag){
         printf("Bit Contribution Test Success+++++++++++\n");        
     } else{
-        printf("Bit Contribution Test Failed: Failed on messaage---------\n");
+        printf("Bit Contribution Test Failed: Failed on messaage---------\n");        
     }    
+    printf("t : %d\n", t);
+    printf("f : %d\n", f);
 
 }

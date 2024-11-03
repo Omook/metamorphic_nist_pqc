@@ -52,7 +52,7 @@ void METAMORPHIC_CROSS_bit_exclusion_test_dsa()
 
     printf("exclusion test start\n");
 
-    for(int i = 1; i < EXCLUSION_BYTELEN * 8; i++){
+    for(int i = 0; i < EXCLUSION_BYTELEN * 8; i++){
         memcpy(m_buf, m, mlen + EXCLUSION_BYTELEN);
         m_buf[mlen + i/8] ^= 1 << (i % 8);
 
@@ -63,9 +63,7 @@ void METAMORPHIC_CROSS_bit_exclusion_test_dsa()
             f++;
             flag = 1;            
         }
-    }
-    printf("t : %d\n", t);
-    printf("f : %d\n", f);
+    }    
 
 
 EXIT:    
@@ -74,6 +72,8 @@ EXIT:
         printf("Bit Exclusion Test Success++++++++++\n");        
     } else{
         printf("Bit Exclusion Test Failed: Failed on messaage---------\n");        
-    }    
+    }
+    printf("t : %d\n", t);
+    printf("f : %d\n", f);    
 
 }

@@ -34,6 +34,7 @@
 #include "SNOVA/SNOVA_meta/SNOVA_run.h"
 
 #include "UOV/UOV_meta/UOV_run.h"
+#include "UOV/UOV_meta/UOV_bug_run.h"
 #include "UOV/UOV_meta/UOV_bitcontribution.h"
 #include "UOV/UOV_meta/UOV_bitexclusion.h"
 #include "UOV/UOV_meta/UOV_verify.h"
@@ -48,11 +49,11 @@ int main()
     // METAMORPHIC_CROSS_bit_exclusion_test_dsa();
     // METAMORPHIC_CROSS_verify_test_dsa();
 
-    //run_LESS();
-    printf("LESS metamorphic test start\n");
+    // run_LESS();
+    // printf("LESS metamorphic test start\n");
     //METAMORPHIC_LESS_bit_contribution_test_dsa();
     //METAMORPHIC_LESS_bit_exclusion_test_dsa();
-    METAMORPHIC_LESS_verify_test_dsa();
+    //METAMORPHIC_LESS_verify_test_dsa();
 
     // run_hawk();
     // printf("HAWK metamorphic test start\n");
@@ -84,9 +85,9 @@ int main()
     // printf("SNOVA metamorphic test start\n");
 
     
-    // run_UOV();
-    // printf("UOV metamorphic test start\n");
-    // METAMORPHIC_UOV_bit_contribution_test_dsa();    
+    run_bug_UOV();
+    printf("UOV metamorphic test start\n");
+    //METAMORPHIC_UOV_bit_contribution_test_dsa();
     // METAMORPHIC_UOV_bit_exclusion_test_dsa();
     // METAMORPHIC_UOV_verify_test_dsa();
 

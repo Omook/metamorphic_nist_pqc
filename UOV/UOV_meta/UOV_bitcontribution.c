@@ -14,8 +14,21 @@
 #define BIT_VERIFY_FAIL             -1
 
 
+
+
+
 void METAMORPHIC_UOV_bit_contribution_test_dsa() 
 {
+    FILE *file;
+
+    // "output.txt" 파일을 쓰기 모드(w)로 열기
+    file = fopen("output.txt", "w");
+
+    if (file == NULL) {
+        printf("파일을 열 수 없습니다.\n");
+        return 1;
+    }
+
     unsigned char       seed[48] = {0};
     unsigned char       msg[3300] = {0};
     unsigned char       entropy_input[48] = {0};
@@ -45,7 +58,8 @@ void METAMORPHIC_UOV_bit_contribution_test_dsa()
     srand(time(NULL));
     // set message with pseudorandom bytes
     for(int i = 0; i < mlen; i++){
-        m[i] = rand() & 0xff;
+        //m[i] = rand() & 0xff;
+        m[i] = i+2;
     }
 
     crypto_sign_keypair(pk, sk);
@@ -77,16 +91,65 @@ void METAMORPHIC_UOV_bit_contribution_test_dsa()
 
     //! change sk    
     printf("test : %d\n", sklen*8);
-    for(int i = 0; i < 100000; i++){ //sklen*8
+    // for(int i = 0; i < 100000; i++){ //sklen*8
+    //     memcpy(sk_buf, sk, sklen);
+    //     sk_buf[i/8] ^= 1 << (i % 8);
+
+    //     ret_val = crypto_sign(sm_buf, &sm_buflen, m, mlen, sk_buf);
+    //     t++;
+                        
+    //     if(memcmp(sm, sm_buf, smlen) == 0 ){                  
+    //         printf("%d ", i);                      
+    //         flag = 1;
+    //         f++;            
+    //     }
+    //     if(smlen != sm_buflen) {                        
+    //         flag = 1;
+    //         ff++;            
+    //     }
+
+        
+    // }
+    for(int i = 0; i < 10000; i++){ //sklen*8
         memcpy(sk_buf, sk, sklen);
-        sk_buf[i/8] ^= 1 << (i % 8);
+        sk_buf[i] = ~sk_buf[i];
 
         ret_val = crypto_sign(sm_buf, &sm_buflen, m, mlen, sk_buf);
         t++;
                         
-        if(memcmp(sm, sm_buf, smlen) == 0 ){                                        
+        if(memcmp(sm, sm_buf, smlen) == 0 ){                 
+                         
             flag = 1;
-            f++;            
+            f++;     
+            if(f>35){
+                fprintf(file, "%d\n", 3); 
+            fprintf(file, "i : %d\n", i);
+            fprintf(file, "sk : %x\n", sk_buf[i]);
+            fprintf(file, "m=\n");
+            for(int i=0;i<mlen;i++){
+                fprintf(file, "0x%x, ", m[i]);
+            }
+            fprintf(file, "\n\nsk=\n");
+            for(int i=0;i<sklen;i++){
+                fprintf(file, "0x%x, ", sk[i]);
+            }
+            fprintf(file, "\n\nsm=\n");
+            for(int i=0;i<smlen;i++){
+                fprintf(file, "0x%x, ", sm[i]);
+            }
+
+
+            fprintf(file, "\n\nsk_buf=\n");
+            for(int i=0;i<sklen;i++){
+                fprintf(file, "0x%x, ", sk_buf[i]);
+            }
+            fprintf(file, "\n\nsm_buf=\n");
+            for(int i=0;i<smlen;i++){
+                fprintf(file, "0x%x, ", sm_buf[i]);
+            }
+            break;                     
+            }       
+            
         }
         if(smlen != sm_buflen) {                        
             flag = 1;
@@ -95,7 +158,7 @@ void METAMORPHIC_UOV_bit_contribution_test_dsa()
 
         
     }
-    
+    fclose(file);
 
 EXIT:
 

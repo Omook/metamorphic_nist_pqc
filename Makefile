@@ -11,7 +11,7 @@ SOURCES = $(wildcard *.c LESS/*.c	LESS/LESS_meta/*.c)
 #SOURCES = $(wildcard *.c MAYO/*.c	MAYO/MAYO_meta/*.c)
 #SOURCES = $(wildcard *.c QRUOV/*.c	QRUOV/QRUOV_meta/*.c)
 #SOURCES = $(wildcard *.c SNOVA/*.c	SNOVA/shake/*.c	SNOVA/shake/*.c	SNOVA/SNOVA_meta/*.c)
-#SOURCES = $(wildcard *.c UOV/*.c	UOV/UOV_meta/*.c)
+SOURCES = $(wildcard *.c UOV/*.c	UOV/UOV_meta/*.c)
 
 
 

@@ -205,7 +205,8 @@ int LESS_verify(const pubkey_t *const PK,
                 const uint64_t mlen,
                 const sign_t *const sig) {
         
-    printf("mono : %d\n",sig->monom_actions[0][MONO_ACTION_PACKEDBYTES-1]); //여기 비트가 안사용됨
+    //printf("mono : %d\n",sig->monom_actions[0][236]); //여기 비트가 안사용됨
+    
     
     uint8_t fixed_weight_string[T] = {0};
     expand_digest_to_fixed_weight(fixed_weight_string, sig->digest);

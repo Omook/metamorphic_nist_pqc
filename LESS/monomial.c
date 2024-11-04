@@ -371,13 +371,14 @@ void expand_to_monom_action(monomial_action_IS_t *mono,
                             const uint8_t *compressed) {
     int decode_state = 0;
     int compress_idx = 0;
-
+    
     // Decompress Permutation
-    for (int idx = 0; idx < K; idx++) {
+    for (int idx = 0; idx < K; idx++) 
+    {
 #if defined(CATEGORY_1)
         mono->permutation[idx] = compressed[compress_idx];
         compress_idx++;
-#elif defined(CATEGORY_3)
+#elif defined(CATEGORY_3) 
         switch(decode_state) {
         case 0:
             mono->permutation[idx] = (compressed[compress_idx] | (compressed[compress_idx+1] << 8)) & MASK_N;
@@ -453,7 +454,8 @@ void expand_to_monom_action(monomial_action_IS_t *mono,
 #endif
 
     // Decompress Coefficients
-    for (int idx = 0; idx < K; idx++) {
+    for (int idx = 0; idx < K; idx++) 
+    {
         switch(decode_state) {
         case 0:
             mono->coefficients[idx] = compressed[compress_idx] & MASK_Q;
@@ -494,7 +496,7 @@ void expand_to_monom_action(monomial_action_IS_t *mono,
             decode_state = 0;
         }
     }
-
+    //printf("com idx : %d\n", compress_idx); //-> 236
 }
 
 int is_monom_action_valid(const monomial_action_IS_t * const mono){

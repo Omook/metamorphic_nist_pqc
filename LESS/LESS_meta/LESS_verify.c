@@ -48,7 +48,7 @@ void METAMORPHIC_LESS_verify_test_dsa()
     
 
     //!change sm
-    for(int i = 2410; i < 2411; i++){ // i < smlen * 8a
+    for(int i = 2400; i < 2500; i++){ // i < smlen * 8a
         memcpy(sm_buf, sm, smlen);
         sm_buf[i/8] ^= 1 << (i % 8);
 
@@ -66,16 +66,17 @@ void METAMORPHIC_LESS_verify_test_dsa()
         // }
         // printf("\n\n");
 
-        for(int i=0;i<smlen;i++){
-            if(sm[i] != sm_buf[i]) {
-                printf("smlen : %d\n", smlen);
-                printf("dif i : %d\n", i);
-                printf("sm[i] : %x\n", sm[i]);
-                printf("smbuf[i] : %x\n", sm_buf[i]);
-            }
-        }
+        // for(int i=0;i<smlen;i++){
+        //     if(sm[i] != sm_buf[i]) {
+        //         printf("smlen : %d\n", smlen);
+        //         printf("dif i : %d\n", i);
+        //         printf("sm[i] : %x\n", sm[i]);
+        //         printf("smbuf[i] : %x\n", sm_buf[i]);
+        //     }
+        // }
 
-        if(ret_val == 0){                                            
+        if(ret_val == 0){                               
+            printf("i : %d\n", i);             
             f++;
             flag = 1;
         }
